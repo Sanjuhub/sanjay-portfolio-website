@@ -145,7 +145,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 }}
-              className="flex flex-wrap gap-4"
+              className="flex flex-wrap gap-4 items-center"
             >
               <button
                 onClick={scrollToContact}
@@ -156,7 +156,7 @@ const Hero = () => {
               
               <button
                 onClick={scrollToProjects}
-                className="px-8 py-3 border-2 border-indigo-500 text-indigo-400 rounded-full font-semibold hover:bg-indigo-500 hover:text-white transition-all duration-300 hover:shadow-lg hover:shadow-indigo-500/25"
+                className="btn-secondary"
               >
                 View My Work
               </button>

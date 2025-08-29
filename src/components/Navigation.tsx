@@ -38,7 +38,7 @@ const Navigation = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass backdrop-blur-lg' : 'bg-transparent'
+        scrolled ? 'glass-elevated backdrop-blur-xl border-b border-white/10 shadow-lg' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -61,7 +61,7 @@ const Navigation = () => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
                 onClick={() => scrollToSection(item.href)}
-                className="relative text-gray-300 hover:text-white transition-colors duration-300 group"
+                className="relative text-gray-300 hover:text-white transition-colors duration-300 group px-2 py-1 rounded-md hover:bg-white/5"
               >
                 {item.name}
                 <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-indigo-500 to-cyan-500 group-hover:w-full transition-all duration-300" />

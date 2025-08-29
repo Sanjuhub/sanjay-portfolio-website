@@ -82,7 +82,7 @@ const Projects = () => {
               initial={{ opacity: 0, y: 50 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="glass rounded-2xl overflow-hidden hover-lift group"
+              className="gradient-border rounded-2xl overflow-hidden group"
             >
               
               {/* Project Header */}
@@ -124,7 +124,7 @@ const Projects = () => {
               </div>
 
               {/* Project Content */}
-              <div className="p-6">
+              <div className="p-6 card">
                 
                 {/* Achievements */}
                 <div className="mb-6">

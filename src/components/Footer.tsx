@@ -44,7 +44,7 @@ const Footer = () => {
   }
 
   return (
-    <footer className="relative border-t border-gray-800">
+    <footer className="relative border-t border-gray-800/60 bg-gradient-to-t from-gray-900 to-gray-900/60">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         {/* Main Footer Content */}
@@ -124,7 +124,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <div className="border-t border-gray-800/60 pt-8 flex flex-col md:flex-row justify-between items-center">
           <motion.p
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
