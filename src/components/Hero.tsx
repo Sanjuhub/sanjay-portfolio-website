@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, Cloud, Zap, Cpu, Globe } from 'lucide-react'
@@ -17,6 +18,7 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
+  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
 
   useEffect(() => {
     const type = () => {
@@ -39,6 +41,20 @@ const Hero = () => {
     const timer = setTimeout(type, isDeleting ? 50 : 100)
     return () => clearTimeout(timer)
   }, [currentText, isDeleting, currentIndex, titles])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && 'matchMedia' in window) {
+      const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+      setPrefersReducedMotion(mq.matches)
+      const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
+      if (mq.addEventListener) mq.addEventListener('change', handler)
+      else mq.addListener(handler)
+      return () => {
+        if (mq.removeEventListener) mq.removeEventListener('change', handler)
+        else mq.removeListener(handler)
+      }
+    }
+  }, [])
 
   const handleMouseMove = (e: React.MouseEvent) => {
     const rect = e.currentTarget.getBoundingClientRect()
@@ -104,7 +120,7 @@ const Hero = () => {
               
               <div className="text-2xl lg:text-4xl font-semibold text-gray-300 h-16 flex items-center">
                 <span className="text-gradient-primary">{currentText}</span>
-                <span className="animate-pulse-slow text-cyan-400">|</span>
+                <span className={prefersReducedMotion ? 'text-cyan-400' : 'animate-pulse-slow text-cyan-400'}>|</span>
               </div>
             </div>
 
@@ -212,31 +228,25 @@ const Hero = () => {
             >
               {/* Animated background rings */}
               <motion.div
-                animate={{ rotate: 360 }}
-                transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                animate={prefersReducedMotion ? undefined : { rotate: 360 }}
+                transition={prefersReducedMotion ? undefined : { duration: 20, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-0 border-2 border-dashed border-indigo-300/30 rounded-full scale-110"
               />
               <motion.div
-                animate={{ rotate: -360 }}
-                transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+                animate={prefersReducedMotion ? undefined : { rotate: -360 }}
+                transition={prefersReducedMotion ? undefined : { duration: 25, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-0 border-2 border-dashed border-cyan-300/30 rounded-full scale-125"
               />
               
               {/* Glowing orbs that follow mouse */}
               <motion.div
-                animate={{
-                  x: mousePosition.x * 0.1,
-                  y: mousePosition.y * 0.1,
-                }}
-                transition={{ type: "spring", stiffness: 50 }}
+                animate={prefersReducedMotion ? { x: 0, y: 0 } : { x: mousePosition.x * 0.1, y: mousePosition.y * 0.1 }}
+                transition={prefersReducedMotion ? undefined : { type: "spring", stiffness: 50 }}
                 className="absolute inset-0 bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 rounded-full blur-3xl"
               />
               <motion.div
-                animate={{
-                  x: mousePosition.x * -0.05,
-                  y: mousePosition.y * -0.05,
-                }}
-                transition={{ type: "spring", stiffness: 30 }}
+                animate={prefersReducedMotion ? { x: 0, y: 0 } : { x: mousePosition.x * -0.05, y: mousePosition.y * -0.05 }}
+                transition={prefersReducedMotion ? undefined : { type: "spring", stiffness: 30 }}
                 className="absolute inset-0 bg-gradient-to-r from-purple-500/20 to-pink-500/20 rounded-full blur-3xl scale-110"
               />
 
@@ -244,19 +254,15 @@ const Hero = () => {
               <motion.div
                 className="relative w-80 h-80 mx-auto my-8 rounded-full overflow-hidden group cursor-pointer"
                 whileHover={{ scale: 1.05 }}
-                animate={{ 
-                  y: [0, -10, 0],
-                }}
-                transition={{ 
-                  y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
-                  scale: { duration: 0.3 }
-                }}
+                animate={prefersReducedMotion ? undefined : { y: [0, -10, 0] }}
+                transition={prefersReducedMotion ? undefined : { y: { duration: 4, repeat: Infinity, ease: "easeInOut" }, scale: { duration: 0.3 } }}
               >
                 {/* Profile Image */}
-                <img
+                <Image
                   src="/profile.jpg"
                   alt="Sanjay Kumar"
-                  className="w-full h-full object-cover rounded-full"
+                  fill
+                  className="object-cover rounded-full"
                 />
                 
                 {/* Hover overlay */}
@@ -278,25 +284,29 @@ const Hero = () => {
                   'bottom': { bottom: '-6px', left: '50%', transform: 'translateX(-50%)' }
                 }
 
+                const animateVal = prefersReducedMotion ? { scale: 1, opacity: 1 } : {
+                  scale: 1,
+                  opacity: 1,
+                  y: [0, Math.sin(index * 1.5) * 10, 0],
+                  rotate: [0, Math.sin(index * 2) * 5, 0]
+                }
+
+                const transitionVal = prefersReducedMotion ? { duration: 0 } : {
+                  scale: { delay: 1 + index * 0.2, duration: 0.5 },
+                  opacity: { delay: 1 + index * 0.2, duration: 0.5 },
+                  y: { duration: 3 + index * 0.5, repeat: Infinity, ease: "easeInOut" },
+                  rotate: { duration: 4 + index * 0.3, repeat: Infinity, ease: "easeInOut" }
+                }
+
                 return (
                   <motion.div
                     key={tech.label}
                     className={`absolute w-20 h-20 bg-gradient-to-r ${tech.color} rounded-2xl flex flex-col items-center justify-center text-white font-bold shadow-2xl cursor-pointer group`}
                     style={positions[tech.position as keyof typeof positions]}
-                    initial={{ scale: 0, opacity: 0 }}
-                    animate={{ 
-                      scale: 1, 
-                      opacity: 1,
-                      y: [0, Math.sin(index * 1.5) * 10, 0],
-                      rotate: [0, Math.sin(index * 2) * 5, 0]
-                    }}
-                    transition={{ 
-                      scale: { delay: 1 + index * 0.2, duration: 0.5 },
-                      opacity: { delay: 1 + index * 0.2, duration: 0.5 },
-                      y: { duration: 3 + index * 0.5, repeat: Infinity, ease: "easeInOut" },
-                      rotate: { duration: 4 + index * 0.3, repeat: Infinity, ease: "easeInOut" }
-                    }}
-                    whileHover={{ 
+                    initial={prefersReducedMotion ? { scale: 1, opacity: 1 } : { scale: 0, opacity: 0 }}
+                    animate={animateVal}
+                    transition={transitionVal}
+                    whileHover={prefersReducedMotion ? {} : { 
                       scale: 1.2, 
                       y: -5,
                       boxShadow: "0 10px 30px rgba(0,0,0,0.3)",
@@ -333,12 +343,12 @@ const Hero = () => {
                     left: `${20 + Math.cos(i * 30 * Math.PI / 180) * 160}px`,
                     top: `${180 + Math.sin(i * 30 * Math.PI / 180) * 160}px`,
                   }}
-                  animate={{
+                  animate={prefersReducedMotion ? { scale: 1, opacity: 1 } : {
                     scale: [0.5, 1.2, 0.5],
                     opacity: [0.3, 1, 0.3],
                     rotate: [0, 360],
                   }}
-                  transition={{
+                  transition={prefersReducedMotion ? { duration: 0 } : {
                     duration: 3 + i * 0.2,
                     repeat: Infinity,
                     delay: i * 0.3,
@@ -347,14 +357,16 @@ const Hero = () => {
               ))}
 
               {/* Interactive cursor follower */}
-              <motion.div
-                className="absolute w-4 h-4 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-full pointer-events-none"
-                animate={{
-                  x: mousePosition.x - 8,
-                  y: mousePosition.y - 8,
-                }}
-                transition={{ type: "spring", stiffness: 500, damping: 30 }}
-              />
+              {!prefersReducedMotion && (
+                <motion.div
+                  className="absolute w-4 h-4 bg-gradient-to-r from-cyan-400 to-indigo-500 rounded-full pointer-events-none"
+                  animate={{
+                    x: mousePosition.x - 8,
+                    y: mousePosition.y - 8,
+                  }}
+                  transition={{ type: "spring", stiffness: 500, damping: 30 }}
+                />
+              )}
             </div>
           </motion.div>
         </div>
