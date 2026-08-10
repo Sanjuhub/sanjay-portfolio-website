@@ -130,7 +130,7 @@ const Experience = () => {
                   <div>
                     <h4 className="text-lg font-semibold text-white mb-3">Technologies Used</h4>
                     <div className="flex flex-wrap gap-2">
-                      {exp.technologies.map((tech, techIndex) => (
+                      {exp.technologies.map((tech) => (
                         <motion.span
                           key={tech}
                           variants={fadeInItem}

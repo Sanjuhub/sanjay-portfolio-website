@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { useEffect, useState } from 'react'
+import { useEffect, useMemo, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Code, Users, Trophy, Zap } from 'lucide-react'
 import { sectionVariants, fadeInLeft, fadeInRight, fadeInUp, fadeInItem } from '@/lib/motion'
@@ -16,12 +16,12 @@ const About = () => {
   const experienceLabel = getExperienceLabel()
   const experienceYears = Number.parseInt(experienceLabel, 10)
 
-  const stats = [
+  const stats = useMemo(() => [
     { icon: Code, label: 'Years Experience', count: experienceYears, suffix: '+' },
     { icon: Trophy, label: 'Projects Completed', count: 50, suffix: '+' },
     { icon: Users, label: 'Teams Led', count: 5, suffix: '+' },
     { icon: Zap, label: 'APIs Built', count: 100, suffix: '+' }
-  ]
+  ], [experienceYears])
 
   const [counts, setCounts] = useState<number[]>([0, 0, 0, 0])
 
@@ -42,7 +42,7 @@ const About = () => {
     }
 
     requestAnimationFrame(animate)
-  }, [inView])
+  }, [inView, stats])
 
   return (
     <section ref={ref} className="py-20 relative">

@@ -3,8 +3,8 @@
 import Image from 'next/image'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
-import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, Cloud, Zap, Cpu, Globe } from 'lucide-react'
-import { sectionVariants, fadeInLeft, fadeInUp, fadeInItem } from '@/lib/motion'
+import { Github, Linkedin, Mail, MapPin, Code, Database, Cloud, Zap, Cpu, Globe } from 'lucide-react'
+import { sectionVariants, fadeInLeft, fadeInItem } from '@/lib/motion'
 import { getExperienceLabel } from '@/lib/experience'
 
 const titles = [
@@ -43,7 +43,7 @@ const Hero = () => {
 
     const timer = setTimeout(type, isDeleting ? 50 : 100)
     return () => clearTimeout(timer)
-  }, [currentText, isDeleting, currentIndex, titles])
+  }, [currentText, isDeleting, currentIndex])
 
   useEffect(() => {
     if (typeof window !== 'undefined' && 'matchMedia' in window) {

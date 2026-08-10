@@ -3,8 +3,8 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react'
-import { sectionVariants, fadeInUp, fadeInLeft, fadeInRight, fadeInItem } from '@/lib/motion'
+import { Mail, MapPin, Send, Github, Linkedin } from 'lucide-react'
+import { sectionVariants, fadeInUp, fadeInRight, fadeInItem } from '@/lib/motion'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -100,7 +100,7 @@ const Contact = () => {
 
             {/* Contact Details */}
             <div className="space-y-6">
-              {contactInfo.map((info, index) => (
+              {contactInfo.map((info) => (
                 <motion.div
                   key={info.label}
                   variants={fadeInItem}

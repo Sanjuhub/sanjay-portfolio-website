@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ExternalLink, Github, Database, Cloud, Cpu } from 'lucide-react'
-import { sectionVariants, fadeInUp, fadeInRight, fadeInItem } from '@/lib/motion'
+import { sectionVariants, fadeInUp, fadeInRight } from '@/lib/motion'
 
 const Projects = () => {
   const [ref, inView] = useInView({
