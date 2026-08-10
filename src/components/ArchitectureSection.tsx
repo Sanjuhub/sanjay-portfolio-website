@@ -184,10 +184,6 @@ const ArchitectureSection = () => {
           </details>
         ))}
       </div>
-
-      <div className="text-center text-sm text-gray-500">
-        <p>Interactive cards keep the section lightweight until you want the details.</p>
-      </div>
     </div>
   )
 }

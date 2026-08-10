@@ -13,7 +13,7 @@ const Footer = () => {
   const socialLinks = [
     {
       name: 'GitHub',
-      href: 'https://github.com/findmesektor',
+      href: 'https://github.com/Sanjuhub',
       icon: <Github size={20} />
     },
     {
@@ -110,7 +110,6 @@ const Footer = () => {
             <h4 className="text-lg font-semibold text-white">Get In Touch</h4>
             <div className="space-y-2 text-gray-400">
               <p>sanjay14321@gmail.com</p>
-              <p>+91 70179 57803</p>
               <p>India</p>
             </div>
             <motion.button
@@ -133,7 +132,7 @@ const Footer = () => {
           >
             © {currentYear} Sanjay Kumar. Made with 
             <Heart size={16} className="text-red-500 animate-pulse" /> 
-            and lots of coffee.
+            and Accelerated by Codex.
           </motion.p>
           
           <motion.button

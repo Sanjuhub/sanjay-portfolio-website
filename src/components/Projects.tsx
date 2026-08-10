@@ -51,7 +51,7 @@ const Projects = () => {
       technologies: ['Node.js', 'Express.js', 'JWT', 'Redis', 'Docker', 'Jest', 'Prometheus'],
       icon: <Cloud className="w-6 h-6" />,
       link: null,
-      github: 'https://github.com/findmesektor',
+      github: 'https://github.com/Sanjuhub',
       color: 'from-blue-500 to-cyan-500'
     }
   ]
@@ -180,7 +180,7 @@ const Projects = () => {
           <div className="flex flex-wrap justify-center gap-4">
             <motion.a
               whileHover={{ scale: 1.05 }}
-              href="https://github.com/findmesektor"
+              href="https://github.com/Sanjuhub"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-primary inline-flex items-center gap-2"

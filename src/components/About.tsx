@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Code, Users, Trophy, Zap } from 'lucide-react'
 import { sectionVariants, fadeInLeft, fadeInRight, fadeInUp, fadeInItem } from '@/lib/motion'
+import { getExperienceLabel } from '@/lib/experience'
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -12,8 +13,11 @@ const About = () => {
     threshold: 0.1
   })
 
+  const experienceLabel = getExperienceLabel()
+  const experienceYears = Number.parseInt(experienceLabel, 10)
+
   const stats = [
-    { icon: Code, label: 'Years Experience', count: 6, suffix: '+' },
+    { icon: Code, label: 'Years Experience', count: experienceYears, suffix: '+' },
     { icon: Trophy, label: 'Projects Completed', count: 50, suffix: '+' },
     { icon: Users, label: 'Teams Led', count: 5, suffix: '+' },
     { icon: Zap, label: 'APIs Built', count: 100, suffix: '+' }
@@ -62,7 +66,7 @@ const About = () => {
           {/* Left side - Text content */}
           <motion.div variants={fadeInLeft} className="space-y-6">
             <p className="text-lg text-gray-300 leading-relaxed">
-              I&apos;m a Senior Backend Engineer with over 6 years of experience in building 
+              I&apos;m a Senior Backend Engineer with over {experienceYears} years of experience in building 
               robust, scalable systems. My expertise lies in Node.js, NestJS, and PostgreSQL, 
               with a strong focus on creating efficient APIs and optimizing system performance.
             </p>

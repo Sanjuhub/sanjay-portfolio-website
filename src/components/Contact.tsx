@@ -53,13 +53,6 @@ const Contact = () => {
       color: 'from-red-500 to-pink-500'
     },
     {
-      icon: <Phone className="w-6 h-6" />,
-      label: 'Phone',
-      value: '+91 70179 57803',
-      href: 'tel:+917017957803',
-      color: 'from-green-500 to-emerald-500'
-    },
-    {
       icon: <MapPin className="w-6 h-6" />,
       label: 'Location',
       value: 'India',
@@ -147,7 +140,7 @@ const Contact = () => {
               <div className="flex gap-4">
                 <motion.a
                   whileHover={{ scale: 1.1, y: -2 }}
-                  href="https://github.com/findmesektor"
+                  href="https://github.com/Sanjuhub"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-4 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors group"

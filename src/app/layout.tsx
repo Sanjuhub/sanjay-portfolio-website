@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import { getExperienceLabel } from '@/lib/experience'
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -18,9 +19,11 @@ const spaceGrotesk = Space_Grotesk({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
 
+const experienceLabel = getExperienceLabel()
+
 export const metadata: Metadata = {
   title: 'Sanjay Kumar - Backend Developer',
-  description: 'Senior Backend Developer specializing in Node.js, NestJS, PostgreSQL, and AWS. Building scalable systems with 6+ years of experience.',
+  description: `Senior Backend Developer specializing in Node.js, NestJS, PostgreSQL, and AWS. Building scalable systems with ${experienceLabel} years of experience.`,
   keywords: 'backend developer, nodejs, nestjs, postgresql, aws, fullstack developer',
   authors: [{ name: 'Sanjay Kumar' }],
   metadataBase: new URL(siteUrl),
@@ -90,7 +93,7 @@ export default function RootLayout({
                 addressCountry: 'IN'
               },
               sameAs: [
-                'https://github.com/findmesektor',
+                'https://github.com/Sanjuhub',
                 'https://www.linkedin.com/in/findmesektor/',
                 'mailto:sanjay14321@gmail.com'
               ],
@@ -128,7 +131,7 @@ export default function RootLayout({
                 url: siteUrl,
                 logo: `${siteUrl}/icon.png`,
                 sameAs: [
-                  'https://github.com/findmesektor',
+                  'https://github.com/Sanjuhub',
                   'https://www.linkedin.com/in/findmesektor/'
                 ]
               }

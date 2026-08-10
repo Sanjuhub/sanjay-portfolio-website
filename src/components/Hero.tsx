@@ -5,6 +5,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, Cloud, Zap, Cpu, Globe } from 'lucide-react'
 import { sectionVariants, fadeInLeft, fadeInUp, fadeInItem } from '@/lib/motion'
+import { getExperienceLabel } from '@/lib/experience'
 
 const titles = [
   'Backend Developer',
@@ -20,6 +21,7 @@ const Hero = () => {
   const [isDeleting, setIsDeleting] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const prefersReducedMotion = useReducedMotion()
+  const experienceLabel = getExperienceLabel()
 
   useEffect(() => {
     const type = () => {
@@ -111,7 +113,7 @@ const Hero = () => {
             </div>
 
             <motion.p variants={fadeInItem} className="text-xl text-gray-400 leading-relaxed max-w-2xl">
-              Senior Backend Engineer with 6+ years of experience building scalable systems 
+              Senior Backend Engineer with {experienceLabel} years of experience building scalable systems 
               with Node.js, NestJS, PostgreSQL, and AWS. Passionate about creating efficient 
               APIs and mentoring development teams.
             </motion.p>
@@ -121,10 +123,6 @@ const Hero = () => {
               <div className="flex items-center gap-2">
                 <Mail size={20} className="text-cyan-400" />
                 <span>sanjay14321@gmail.com</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Phone size={20} className="text-cyan-400" />
-                <span>+91 70179 57803</span>
               </div>
               <div className="flex items-center gap-2">
                 <MapPin size={20} className="text-cyan-400" />
@@ -155,7 +153,7 @@ const Hero = () => {
             <motion.div variants={fadeInItem} className="flex gap-6">
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
-                href="https://github.com/findmesektor"
+                href="https://github.com/Sanjuhub"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Visit GitHub profile"
