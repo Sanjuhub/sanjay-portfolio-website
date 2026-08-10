@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
 import { Mail, Phone, MapPin, Send, Github, Linkedin } from 'lucide-react'
+import { sectionVariants, fadeInUp, fadeInLeft, fadeInRight, fadeInItem } from '@/lib/motion'
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -69,15 +70,15 @@ const Contact = () => {
 
   return (
     <section ref={ref} className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <motion.div variants={fadeInUp} className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Get In <span className="text-gradient-primary">Touch</span>
           </h2>
@@ -109,9 +110,7 @@ const Contact = () => {
               {contactInfo.map((info, index) => (
                 <motion.div
                   key={info.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
+                  variants={fadeInItem}
                   className="group"
                 >
                   {info.href ? (
@@ -143,12 +142,7 @@ const Contact = () => {
             </div>
 
             {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.8 }}
-              className="pt-8"
-            >
+            <motion.div variants={fadeInItem} className="pt-8">
               <h4 className="text-lg font-semibold text-white mb-4">Connect with me</h4>
               <div className="flex gap-4">
                 <motion.a
@@ -175,18 +169,12 @@ const Contact = () => {
           </motion.div>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="glass rounded-2xl p-8"
-          >
+          <motion.div variants={fadeInRight} className="glass rounded-2xl p-8">
             <h3 className="text-2xl font-bold text-white mb-6">Send a Message</h3>
             
             {submitted && (
               <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
+                variants={fadeInItem}
                 className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300"
               >
                 Thank you for your message! I&apos;ll get back to you soon.
@@ -282,9 +270,9 @@ const Contact = () => {
             </form>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
 
-export default Contact 
+export default Contact

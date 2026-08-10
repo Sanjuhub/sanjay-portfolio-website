@@ -1,9 +1,10 @@
 'use client'
 
 import Image from 'next/image'
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 import { useEffect, useState } from 'react'
 import { Github, Linkedin, Mail, Phone, MapPin, Code, Database, Cloud, Zap, Cpu, Globe } from 'lucide-react'
+import { sectionVariants, fadeInLeft, fadeInUp, fadeInItem } from '@/lib/motion'
 
 const titles = [
   'Backend Developer',
@@ -18,7 +19,7 @@ const Hero = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isDeleting, setIsDeleting] = useState(false)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false)
+  const prefersReducedMotion = useReducedMotion()
 
   useEffect(() => {
     const type = () => {
@@ -45,13 +46,8 @@ const Hero = () => {
   useEffect(() => {
     if (typeof window !== 'undefined' && 'matchMedia' in window) {
       const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
-      setPrefersReducedMotion(mq.matches)
-      const handler = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
-      if (mq.addEventListener) mq.addEventListener('change', handler)
-      else mq.addListener(handler)
-      return () => {
-        if (mq.removeEventListener) mq.removeEventListener('change', handler)
-        else mq.removeListener(handler)
+      if (mq.addEventListener) {
+        mq.addEventListener('change', () => {})
       }
     }
   }, [])
@@ -89,32 +85,22 @@ const Hero = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20"
+      >
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
           {/* Left side - Text content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="space-y-8"
-          >
+          <motion.div variants={fadeInLeft} className="space-y-8">
             <div className="space-y-4">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="text-lg text-cyan-400 font-semibold"
-              >
+              <motion.p variants={fadeInItem} className="text-lg text-cyan-400 font-semibold">
                 Hello, I&apos;m
               </motion.p>
               
-              <motion.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-5xl lg:text-7xl font-bold text-white"
-              >
+              <motion.h1 variants={fadeInItem} className="text-5xl lg:text-7xl font-bold text-white">
                 Sanjay Kumar
               </motion.h1>
               
@@ -124,24 +110,14 @@ const Hero = () => {
               </div>
             </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="text-xl text-gray-400 leading-relaxed max-w-2xl"
-            >
+            <motion.p variants={fadeInItem} className="text-xl text-gray-400 leading-relaxed max-w-2xl">
               Senior Backend Engineer with 6+ years of experience building scalable systems 
               with Node.js, NestJS, PostgreSQL, and AWS. Passionate about creating efficient 
               APIs and mentoring development teams.
             </motion.p>
 
             {/* Contact Info */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6 }}
-              className="flex flex-wrap gap-6 text-gray-400"
-            >
+            <motion.div variants={fadeInItem} className="flex flex-wrap gap-6 text-gray-400">
               <div className="flex items-center gap-2">
                 <Mail size={20} className="text-cyan-400" />
                 <span>sanjay14321@gmail.com</span>
@@ -157,42 +133,35 @@ const Hero = () => {
             </motion.div>
 
             {/* Action Buttons */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.7 }}
-              className="flex flex-wrap gap-4 items-center"
-            >
+            <motion.div variants={fadeInItem} className="flex flex-wrap gap-4 items-center">
               <button
+                type="button"
                 onClick={scrollToContact}
-                className="btn-primary"
+                className="btn-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
                 Get In Touch
               </button>
               
               <button
+                type="button"
                 onClick={scrollToProjects}
-                className="btn-secondary"
+                className="btn-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
                 View My Work
               </button>
             </motion.div>
 
             {/* Social Links */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className="flex gap-6"
-            >
+            <motion.div variants={fadeInItem} className="flex gap-6">
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
                 href="https://github.com/findmesektor"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
+                aria-label="Visit GitHub profile"
+                className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
-                <Github size={24} className="text-gray-300" />
+                <Github size={24} className="text-gray-300" aria-hidden="true" />
               </motion.a>
               
               <motion.a
@@ -200,17 +169,19 @@ const Hero = () => {
                 href="https://www.linkedin.com/in/findmesektor/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
+                aria-label="Visit LinkedIn profile"
+                className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
-                <Linkedin size={24} className="text-gray-300" />
+                <Linkedin size={24} className="text-gray-300" aria-hidden="true" />
               </motion.a>
               
               <motion.a
                 whileHover={{ scale: 1.1, y: -2 }}
                 href="mailto:sanjay14321@gmail.com"
-                className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors"
+                aria-label="Send email"
+                className="p-3 bg-gray-800 rounded-full hover:bg-gray-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-gray-900"
               >
-                <Mail size={24} className="text-gray-300" />
+                <Mail size={24} className="text-gray-300" aria-hidden="true" />
               </motion.a>
             </motion.div>
           </motion.div>
@@ -262,6 +233,9 @@ const Hero = () => {
                   src="/profile.jpg"
                   alt="Sanjay Kumar"
                   fill
+                  priority
+                  sizes="(max-width: 768px) 280px, 320px"
+                  quality={90}
                   className="object-cover rounded-full"
                 />
                 
@@ -335,7 +309,7 @@ const Hero = () => {
               })}
 
               {/* Floating particles around the profile */}
-              {Array.from({ length: 12 }).map((_, i) => (
+              {Array.from({ length: 6 }).map((_, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-2 h-2 bg-cyan-400 rounded-full"
@@ -370,9 +344,9 @@ const Hero = () => {
             </div>
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }
 
-export default Hero 
+export default Hero

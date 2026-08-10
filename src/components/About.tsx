@@ -1,8 +1,10 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import { useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import { Code, Users, Trophy, Zap } from 'lucide-react'
+import { sectionVariants, fadeInLeft, fadeInRight, fadeInUp, fadeInItem } from '@/lib/motion'
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -11,21 +13,42 @@ const About = () => {
   })
 
   const stats = [
-    { icon: Code, label: 'Years Experience', value: '6+' },
-    { icon: Trophy, label: 'Projects Completed', value: '50+' },
-    { icon: Users, label: 'Teams Led', value: '5+' },
-    { icon: Zap, label: 'APIs Built', value: '100+' }
+    { icon: Code, label: 'Years Experience', count: 6, suffix: '+' },
+    { icon: Trophy, label: 'Projects Completed', count: 50, suffix: '+' },
+    { icon: Users, label: 'Teams Led', count: 5, suffix: '+' },
+    { icon: Zap, label: 'APIs Built', count: 100, suffix: '+' }
   ]
+
+  const [counts, setCounts] = useState<number[]>([0, 0, 0, 0])
+
+  useEffect(() => {
+    if (!inView) return
+
+    const targets = stats.map((stat) => stat.count)
+    const duration = 1200
+    const startTime = performance.now()
+
+    const animate = (currentTime: number) => {
+      const progress = Math.min((currentTime - startTime) / duration, 1)
+      setCounts(targets.map((target) => Math.round(target * progress)))
+
+      if (progress < 1) {
+        requestAnimationFrame(animate)
+      }
+    }
+
+    requestAnimationFrame(animate)
+  }, [inView])
 
   return (
     <section ref={ref} className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
+        <motion.div variants={fadeInUp} className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             About <span className="text-gradient-primary">Me</span>
           </h2>
@@ -37,12 +60,7 @@ const About = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           
           {/* Left side - Text content */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-6"
-          >
+          <motion.div variants={fadeInLeft} className="space-y-6">
             <p className="text-lg text-gray-300 leading-relaxed">
               I&apos;m a Senior Backend Engineer with over 6 years of experience in building 
               robust, scalable systems. My expertise lies in Node.js, NestJS, and PostgreSQL, 
@@ -77,30 +95,27 @@ const About = () => {
           </motion.div>
 
           {/* Right side - Stats */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="grid grid-cols-2 gap-6"
-          >
+          <motion.div variants={fadeInRight} className="grid grid-cols-2 gap-6">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
+                variants={fadeInItem}
                 className="glass rounded-2xl p-6 text-center hover-lift"
+                whileHover={{ y: -4 }}
               >
                 <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-indigo-500 to-cyan-500 rounded-full mb-4">
                   <stat.icon size={24} className="text-white" />
                 </div>
-                <h3 className="text-3xl font-bold text-white mb-2">{stat.value}</h3>
+                <h3 className="text-3xl font-bold text-white mb-2">
+                  {counts[index]}
+                  {stat.suffix}
+                </h3>
                 <p className="text-gray-400 text-sm">{stat.label}</p>
               </motion.div>
             ))}
           </motion.div>
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

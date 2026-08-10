@@ -4,12 +4,16 @@ import './globals.css'
 
 const inter = Inter({ 
   subsets: ['latin'],
-  variable: '--font-inter'
+  variable: '--font-inter',
+  display: 'swap',
+  weight: ['400', '500', '600', '700']
 })
 
 const spaceGrotesk = Space_Grotesk({ 
   subsets: ['latin'],
-  variable: '--font-space-grotesk'
+  variable: '--font-space-grotesk',
+  display: 'swap',
+  weight: ['400', '500', '600', '700']
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
@@ -21,7 +25,7 @@ export const metadata: Metadata = {
   authors: [{ name: 'Sanjay Kumar' }],
   metadataBase: new URL(siteUrl),
   alternates: {
-    canonical: '/',
+    canonical: siteUrl,
   },
   openGraph: {
     title: 'Sanjay Kumar - Backend Developer',
@@ -65,6 +69,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans antialiased bg-gray-900 text-white`}>
+        <a href="#main-content" className="skip-link">Skip to content</a>
         {children}
         <script
           type="application/ld+json"
@@ -99,6 +104,35 @@ export default function RootLayout({
                 'Microservices'
               ]
             })
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify([
+              {
+                '@context': 'https://schema.org',
+                '@type': 'WebSite',
+                name: 'Sanjay Kumar Portfolio',
+                url: siteUrl,
+                potentialAction: {
+                  '@type': 'SearchAction',
+                  target: `${siteUrl}/?q={search_term_string}`,
+                  'query-input': 'required name=search_term_string'
+                }
+              },
+              {
+                '@context': 'https://schema.org',
+                '@type': 'Organization',
+                name: 'Sanjay Kumar',
+                url: siteUrl,
+                logo: `${siteUrl}/icon.png`,
+                sameAs: [
+                  'https://github.com/findmesektor',
+                  'https://www.linkedin.com/in/findmesektor/'
+                ]
+              }
+            ])
           }}
         />
       </body>

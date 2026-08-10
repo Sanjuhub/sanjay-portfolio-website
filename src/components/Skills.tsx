@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { useState } from 'react'
+import { sectionVariants, fadeInUp, fadeInItem } from '@/lib/motion'
 
 const Skills = () => {
   const [ref, inView] = useInView({
@@ -55,15 +56,15 @@ const Skills = () => {
 
   return (
     <section ref={ref} className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <motion.div variants={fadeInUp} className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Technical <span className="text-gradient-primary">Skills</span>
           </h2>
@@ -73,12 +74,7 @@ const Skills = () => {
         </motion.div>
 
         {/* Category Tabs */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-4 mb-12"
-        >
+        <motion.div variants={fadeInItem} className="flex flex-wrap justify-center gap-4 mb-12">
           {categories.map((category) => (
             <button
               key={category}
@@ -97,18 +93,15 @@ const Skills = () => {
         {/* Skills Grid */}
         <motion.div
           key={activeCategory}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          variants={fadeInUp}
           className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto"
         >
           {skillCategories[activeCategory as keyof typeof skillCategories].skills.map((skill, index) => (
             <motion.div
               key={skill.name}
-              initial={{ opacity: 0, x: -20 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              variants={fadeInItem}
               className="glass rounded-xl p-6 hover-lift"
+              whileHover={{ y: -4 }}
             >
               <div className="flex justify-between items-center mb-3">
                 <h3 className="text-lg font-semibold text-white">{skill.name}</h3>
@@ -159,9 +152,9 @@ const Skills = () => {
             ))}
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }
 
-export default Skills 
+export default Skills

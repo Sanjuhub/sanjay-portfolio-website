@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { Calendar, MapPin, Building, TrendingUp } from 'lucide-react'
+import { sectionVariants, fadeInLeft, fadeInRight, fadeInUp, fadeInItem } from '@/lib/motion'
 
 const Experience = () => {
   const [ref, inView] = useInView({
@@ -13,9 +14,22 @@ const Experience = () => {
   const experiences = [
     {
       title: 'Senior Software Engineer',
+      company: 'Shopee Global',
+      location: 'Gurgaon, India',
+      period: 'March 2026 – Present',
+      achievements: [
+        'Built and integrated ERP, inventory, and order automation workflows with Zoho CRM and Zoho Books, reducing manual operational effort and improving business efficiency',
+        'Developed scalable event-driven and queue-based microservice workflows for product sync, order processing, payments, and logistics with high reliability and fault tolerance',
+        'Designed and implemented a secure digital wallet system enabling seamless refunds, cashback, and customer balance management within the platform ecosystem',
+        'Implemented queue-based processing using AWS SQS'
+      ],
+      technologies: ['Node.js', 'Microservices', 'AWS SQS', 'Event-driven architecture', 'Zoho CRM', 'Zoho Books', 'Payments']
+    },
+    {
+      title: 'Senior Software Engineer',
       company: 'Dianapps Technologies',
       location: 'Gurgaon',
-      period: 'May 2022 – Present',
+      period: 'May 2022 – Feb 2026',
       achievements: [
         'Developed REST and GraphQL APIs in Node.js/NestJS with PostgreSQL (40% faster)',
         'Mentored engineers and led Agile ceremonies to improve delivery',
@@ -39,15 +53,15 @@ const Experience = () => {
 
   return (
     <section ref={ref} className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <motion.div variants={fadeInUp} className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Work <span className="text-gradient-primary">Experience</span>
           </h2>
@@ -66,18 +80,10 @@ const Experience = () => {
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
+                variants={index % 2 === 0 ? fadeInLeft : fadeInRight}
                 className={`flex items-center ${index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'}`}
               >
-                
-                {/* Timeline dot */}
-                <div className="hidden md:flex absolute left-6 w-4 h-4 bg-gradient-to-r from-indigo-500 to-cyan-500 rounded-full border-4 border-gray-900" />
-
-                {/* Content card */}
                 <div className={`glass rounded-2xl p-8 hover-lift w-full ${index % 2 === 0 ? 'md:ml-20' : 'md:mr-20'}`}>
-                  
                   {/* Header */}
                   <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
                     <div>
@@ -110,9 +116,7 @@ const Experience = () => {
                       {exp.achievements.map((achievement, achIndex) => (
                         <motion.li
                           key={achIndex}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={inView ? { opacity: 1, x: 0 } : {}}
-                          transition={{ duration: 0.6, delay: 0.5 + index * 0.2 + achIndex * 0.1 }}
+                          variants={fadeInItem}
                           className="flex items-start gap-3 text-gray-300"
                         >
                           <div className="w-2 h-2 bg-cyan-400 rounded-full mt-2 flex-shrink-0" />
@@ -129,9 +133,7 @@ const Experience = () => {
                       {exp.technologies.map((tech, techIndex) => (
                         <motion.span
                           key={tech}
-                          initial={{ opacity: 0, scale: 0.8 }}
-                          animate={inView ? { opacity: 1, scale: 1 } : {}}
-                          transition={{ duration: 0.5, delay: 0.8 + index * 0.2 + techIndex * 0.05 }}
+                          variants={fadeInItem}
                           className="px-3 py-1 bg-gradient-to-r from-indigo-500/20 to-cyan-500/20 border border-indigo-500/30 rounded-full text-sm text-cyan-300"
                         >
                           {tech}
@@ -146,12 +148,7 @@ const Experience = () => {
         </div>
 
         {/* Education Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="mt-20"
-        >
+        <motion.div variants={fadeInUp} className="mt-20">
           <h3 className="text-3xl font-bold text-white mb-8 text-center">Education</h3>
           <div className="glass rounded-2xl p-8 max-w-2xl mx-auto hover-lift">
             <div className="text-center">
@@ -163,12 +160,7 @@ const Experience = () => {
         </motion.div>
 
         {/* Certifications */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, delay: 1 }}
-          className="mt-16"
-        >
+        <motion.div variants={fadeInUp} className="mt-16">
           <h3 className="text-3xl font-bold text-white mb-8 text-center">Certifications</h3>
           <div className="glass rounded-2xl p-8 max-w-2xl mx-auto hover-lift">
             <div className="text-center">
@@ -177,9 +169,9 @@ const Experience = () => {
             </div>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }
 
-export default Experience 
+export default Experience

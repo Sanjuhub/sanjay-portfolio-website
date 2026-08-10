@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
 import { ExternalLink, Github, Database, Cloud, Cpu } from 'lucide-react'
+import { sectionVariants, fadeInUp, fadeInRight, fadeInItem } from '@/lib/motion'
 
 const Projects = () => {
   const [ref, inView] = useInView({
@@ -57,15 +58,15 @@ const Projects = () => {
 
   return (
     <section ref={ref} className="py-20 relative">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <motion.div
+        variants={sectionVariants}
+        initial="hidden"
+        animate={inView ? 'visible' : 'hidden'}
+        className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      >
         
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <motion.div variants={fadeInUp} className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
             Featured <span className="text-gradient-primary">Projects</span>
           </h2>
@@ -75,14 +76,13 @@ const Projects = () => {
         </motion.div>
 
         {/* Projects Grid */}
-        <div className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
+        <motion.div variants={fadeInUp} className="grid lg:grid-cols-2 xl:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: index * 0.2 }}
-              className="gradient-border rounded-2xl overflow-hidden group"
+              variants={fadeInRight}
+              className="gradient-border rounded-2xl overflow-hidden group hover-lift"
+              whileHover={{ y: -6 }}
             >
               
               {/* Project Header */}
@@ -165,7 +165,7 @@ const Projects = () => {
               </div>
             </motion.div>
           ))}
-        </div>
+        </motion.div>
 
         {/* Call to Action */}
         <motion.div
@@ -200,9 +200,9 @@ const Projects = () => {
             </motion.button>
           </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }
 
-export default Projects 
+export default Projects

@@ -1,32 +1,36 @@
-'use client'
-
-import { motion } from 'framer-motion'
-import { useInView } from 'react-intersection-observer'
-import { useState, useEffect } from 'react'
 import Navigation from '@/components/Navigation'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Skills from '@/components/Skills'
+import Architecture from '@/components/Architecture'
 import Experience from '@/components/Experience'
 import Projects from '@/components/Projects'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
-import { BackgroundElements } from '@/components/BackgroundElements'
+import { BackgroundElementsLoader } from '@/components/BackgroundElementsLoader'
 
 export default function Home() {
-  const [mounted, setMounted] = useState(false)
-
-  useEffect(() => {
-    setMounted(true)
-  }, [])
-
-  if (!mounted) {
-    return null
-  }
-
   return (
-    <main className="relative min-h-screen overflow-x-hidden">
-      <BackgroundElements />
+    <>
+      {/* Breadcrumb and WebSite structured data for the homepage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: '/' },
+              { '@type': 'ListItem', position: 2, name: 'About', item: '/#about' },
+              { '@type': 'ListItem', position: 3, name: 'Skills', item: '/#skills' },
+              { '@type': 'ListItem', position: 4, name: 'Projects', item: '/#projects' },
+              { '@type': 'ListItem', position: 5, name: 'Contact', item: '/#contact' }
+            ]
+          })
+        }}
+      />
+    <main id="main-content" className="relative min-h-screen overflow-x-hidden">
+      <BackgroundElementsLoader />
       <Navigation />
       
       <div className="relative z-10">
@@ -40,6 +44,10 @@ export default function Home() {
         
         <section id="skills">
           <Skills />
+        </section>
+        
+        <section id="architecture">
+          <Architecture />
         </section>
         
         <section id="experience">
@@ -57,5 +65,6 @@ export default function Home() {
       
       <Footer />
     </main>
+    </>
   )
 }
