@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import portfolioData from '@/data/portfolio.json';
+import HexBackground from '@/components/HexBackground/HexBackground';
 import './globals.css';
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -34,7 +35,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${hankenGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body className="bg-black text-white font-sans">{children}</body>
+      <body className="bg-black text-white font-sans">
+        <HexBackground />
+        <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
+      </body>
     </html>
   );
 }

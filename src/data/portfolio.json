@@ -2,66 +2,113 @@
   "name": "Sanjay Kumar",
   "title": "Senior Software Engineer",
   "hero": {
-    "headline": ["Building", "Digital", "Experiences", "That", "Matter"],
-    "accentWord": "Digital",
-    "bio": "Senior Software Engineer specialising in scalable backend systems, cloud infrastructure, and developer tooling. I turn complex problems into clean, maintainable solutions.",
-    "techStack": ["TypeScript", "React", "Node.js", "AWS", "Kubernetes"],
-    "terminalCode": "const engineer = {\n  name: 'Sanjay Kumar',\n  role: 'Senior Software Engineer',\n  stack: ['TypeScript', 'React', 'Node.js', 'AWS'],\n  passion: 'Building things that scale'\n};"
+    "headline": ["Systems", "That", "Scale,", "Code", "That", "Lasts"],
+    "accentWord": "Scale,",
+    "bio": "7 years building distributed backends with Node.js, NestJS, and PostgreSQL. I care about architecture that holds up under pressure — clean APIs, reliable integrations, and teams that ship with confidence.",
+    "techStack": ["Node.js", "NestJS", "TypeScript", "PostgreSQL", "AWS", "Redis"],
+    "terminalCode": "const sanjay = {\n  role: 'Senior Software Engineer',\n  focus: 'Backend & Distributed Systems',\n  stack: ['Node.js', 'NestJS', 'TypeScript', 'PostgreSQL'],\n  cloud: ['AWS SQS', 'EC2', 'S3', 'Lambda'],\n  loves: 'Turning complexity into clarity'\n};"
   },
   "skills": [
     "TypeScript",
-    "JavaScript",
-    "React",
-    "Next.js",
+    "JavaScript (ES6+)",
     "Node.js",
-    "Python",
-    "AWS",
-    "GCP",
-    "Docker",
-    "Kubernetes",
+    "NestJS",
+    "Express.js",
+    "React.js",
+    "Next.js",
     "PostgreSQL",
+    "MongoDB",
     "Redis",
+    "Elasticsearch",
     "GraphQL",
     "REST APIs",
+    "AWS",
+    "Docker",
+    "Kafka",
+    "RabbitMQ",
+    "GitHub Actions",
     "CI/CD",
-    "Terraform"
+    "Jest"
   ],
   "projects": [
     {
-      "id": "project-alpha",
-      "title": "Project Alpha",
-      "description": "A scalable microservices platform handling 10k+ requests/sec with sub-10ms p99 latency.",
-      "techStack": ["Node.js", "Kubernetes", "Kafka", "PostgreSQL"],
-      "thumbnailUrl": "https://sanjay.dev/images/project-alpha.jpg",
-      "githubUrl": "https://github.com/sanjay/project-alpha",
-      "demoUrl": "https://alpha.example.com"
+      "id": "ourshopee",
+      "title": "OurShopee.com",
+      "description": "E-commerce platform serving 20K+ monthly active users across GCC countries, powered by event-driven microservices and real-time sync with Zoho Books ERP.",
+      "techStack": ["Node.js", "Next.js", "MySQL", "Elasticsearch", "AWS SQS", "Redis", "Microservices"]
+    },
+    {
+      "id": "hirenetix",
+      "title": "Hirenetix",
+      "description": "AI-powered Talent Intelligence Platform with multi-tenant architecture, automated job scoring workflows, and AI-assisted job template generation via DeepSeek API.",
+      "techStack": ["NestJS", "PostgreSQL", "Next.js", "Tailwind CSS", "AWS", "DeepSeek API"]
+    },
+    {
+      "id": "thousand-greens",
+      "title": "Thousand Greens",
+      "description": "Private golf networking platform with a full GraphQL API migration that cut API requests by 60% and grew daily active users by 25%.",
+      "techStack": ["React.js", "Next.js", "GraphQL", "PostgreSQL"]
+    },
+    {
+      "id": "vendure-oss",
+      "title": "Vendure (Open Source)",
+      "description": "Contributed a promotion validation bugfix with regression tests to the Vendure headless commerce framework. PR merged into the official repository.",
+      "techStack": ["TypeScript", "NestJS", "GraphQL", "React"],
+      "githubUrl": "https://github.com/vendure-ecommerce/vendure"
     }
   ],
   "experience": [
     {
-      "id": "exp-acme",
-      "company": "Acme Corp",
+      "id": "exp-ourshopee",
+      "company": "Ourshopee.com",
       "role": "Senior Software Engineer",
-      "startDate": "2022-03",
+      "startDate": "2026-03",
       "endDate": "Present",
       "bullets": [
-        "Led migration of monolith to microservices, reducing deploy times by 60%",
-        "Mentored 3 junior engineers through structured code review process"
+        "Lead a backend engineering team — driving system design, code reviews, and delivery for an e-commerce platform with 20K+ monthly active users across GCC countries",
+        "Designed event-driven microservices on AWS SQS to automate product and order sync with Zoho Books ERP, eliminating manual reconciliation",
+        "Built a secure digital wallet system handling refunds, cashback, and customer balance management end-to-end",
+        "Work cross-functionally with product, QA, and engineering to move features from spec to production reliably"
+      ]
+    },
+    {
+      "id": "exp-dianapps",
+      "company": "DianApps Technologies",
+      "role": "Senior Software Engineer",
+      "startDate": "2022-05",
+      "endDate": "2026-02",
+      "bullets": [
+        "Designed and shipped REST and GraphQL APIs with Node.js and NestJS across multiple client products",
+        "Drove a 40% reduction in API response times through query optimisation, caching strategies, and profiling",
+        "Owned architecture reviews and technical design discussions; maintained high code-quality standards through peer reviews",
+        "Mentored junior engineers and ran Agile ceremonies including sprint planning and retrospectives"
+      ]
+    },
+    {
+      "id": "exp-xorlabs",
+      "company": "Xorlabs LLC",
+      "role": "Associate Software Engineer",
+      "startDate": "2019-02",
+      "endDate": "2022-04",
+      "bullets": [
+        "Built backend services and REST APIs for SaaS products using Node.js and MongoDB",
+        "Introduced CI/CD automation that cut deployment errors by 50%",
+        "Collaborated directly with stakeholders on technical scoping and delivery planning"
       ]
     }
   ],
   "socialLinks": [
-    { "platform": "GitHub", "url": "https://github.com/sanjay" },
-    { "platform": "LinkedIn", "url": "https://linkedin.com/in/sanjay" }
+    { "platform": "GitHub", "url": "https://github.com/Sanjuhub" },
+    { "platform": "LinkedIn", "url": "https://linkedin.com/in/findmesektor" }
   ],
-  "email": "hello@sanjay.dev",
+  "email": "sanjay14324@gmail.com",
   "cvUrl": "https://drive.google.com/file/d/example/view",
   "contact": {
-    "heading": "Get In Touch"
+    "heading": "Let's Work Together"
   },
   "seo": {
     "title": "Sanjay Kumar — Senior Software Engineer",
-    "description": "Portfolio of Sanjay Kumar, a Senior Software Engineer specialising in scalable backend systems and cloud infrastructure.",
+    "description": "Senior Backend Engineer with 7 years building distributed systems with Node.js, NestJS, PostgreSQL, and AWS. Open to new opportunities.",
     "ogImage": "https://sanjay.dev/og-image.jpg",
     "siteUrl": "https://sanjay.dev"
   }
