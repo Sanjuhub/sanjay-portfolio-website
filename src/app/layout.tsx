@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
+import { Analytics } from '@vercel/analytics/next';
 import portfolioData from '@/data/portfolio.json';
 import HexBackground from '@/components/HexBackground/HexBackground';
 import CustomCursor from '@/components/CustomCursor/CustomCursor';
@@ -40,6 +41,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <HexBackground />
         <CustomCursor />
         <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
+        <Analytics />
       </body>
     </html>
   )
