@@ -6,7 +6,7 @@
     "accentWord": "Scale,",
     "bio": "7 years building distributed backends with Node.js, NestJS, and PostgreSQL. I care about architecture that holds up under pressure — clean APIs, reliable integrations, and teams that ship with confidence.",
     "techStack": ["Node.js", "NestJS", "TypeScript", "PostgreSQL", "AWS", "Redis"],
-    "terminalCode": "const sanjay = {\n  role: 'Senior Software Engineer',\n  focus: 'Backend & Distributed Systems',\n  stack: ['Node.js', 'NestJS', 'TypeScript', 'PostgreSQL'],\n  cloud: ['AWS SQS', 'EC2', 'S3', 'Lambda'],\n  loves: 'Turning complexity into clarity'\n};"
+    "terminalCode": "// Initialize engineer profile\n\nconst SanjayKumar = {\n  role: 'Senior Backend Engineer',\n  focus: ['Microservices', 'Event-Driven Arch'],\n  location: 'Gurgaon, India',\n  techStack: {\n    languages: ['JavaScript', 'TypeScript'],\n    frameworks: ['Node.js', 'NestJS', 'Express'],\n    databases: ['PostgreSQL', 'Redis', 'MongoDB']\n  },\n  execute: function() {\n    return 'Building reliable products at scale.';\n  }\n};"
   },
   "skills": [
     "TypeScript",
@@ -40,7 +40,7 @@
     {
       "id": "hirenetix",
       "title": "Hirenetix",
-      "description": "AI-powered Talent Intelligence Platform with multi-tenant architecture, automated job scoring workflows, and AI-assisted job template generation via DeepSeek API.",
+      "description": "AI-powered Talent Intelligence Platform with multi-tenant architecture, job scoring workflows, and AI-assisted template generation via DeepSeek API.",
       "techStack": ["NestJS", "PostgreSQL", "Next.js", "Tailwind CSS", "AWS", "DeepSeek API"]
     },
     {
