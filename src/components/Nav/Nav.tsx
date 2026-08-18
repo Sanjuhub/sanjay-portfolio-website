@@ -39,11 +39,12 @@ export default function Nav({ ownerName, cvUrl, sections }: NavProps) {
                   e.preventDefault();
                   handleNavClick(section.id);
                 }}
-                className={
+                className={[
+                  'nav-link font-mono text-xs uppercase',
                   activeId === section.id
-                    ? 'font-mono text-xs uppercase text-red-500 border-b border-red-500 transition-colors'
-                    : 'font-mono text-xs uppercase text-white hover:text-red-500 transition-colors'
-                }
+                    ? 'text-red-500 active'
+                    : 'text-white',
+                ].join(' ')}
               >
                 {section.label}
               </a>
@@ -53,7 +54,7 @@ export default function Nav({ ownerName, cvUrl, sections }: NavProps) {
               href={cvUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center font-mono text-xs uppercase text-white hover:text-red-500 transition-colors border border-white/40 hover:border-red-500 px-3 py-1"
+              className="nav-resume flex items-center font-mono text-xs uppercase text-white border border-white/40 px-3 py-1 transition-all duration-200 hover:text-red-500 hover:border-red-500 hover:bg-red-500/5 hover:[clip-path:polygon(0_0,calc(100%_-_8px)_0,100%_8px,100%_100%,8px_100%,0_calc(100%_-_8px))]"
             >
               <Terminal className="w-4 h-4 mr-2" />
               Resume

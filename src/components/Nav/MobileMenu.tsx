@@ -29,11 +29,10 @@ export default function MobileMenu({
               e.preventDefault();
               handleLinkClick(section.id);
             }}
-            className={
-              activeId === section.id
-                ? 'font-mono text-2xl uppercase text-red-500 border-b border-red-500 transition-colors py-2'
-                : 'font-mono text-2xl uppercase text-white hover:text-red-500 transition-colors py-2'
-            }
+            className={[
+              'nav-link font-mono text-2xl uppercase py-2',
+              activeId === section.id ? 'text-red-500 active' : 'text-white',
+            ].join(' ')}
           >
             {section.label}
           </a>
