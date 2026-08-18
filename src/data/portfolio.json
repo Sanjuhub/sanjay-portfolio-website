@@ -1,0 +1,68 @@
+{
+  "name": "Sanjay Kumar",
+  "title": "Senior Software Engineer",
+  "hero": {
+    "headline": ["Building", "Digital", "Experiences", "That", "Matter"],
+    "accentWord": "Digital",
+    "bio": "Senior Software Engineer specialising in scalable backend systems, cloud infrastructure, and developer tooling. I turn complex problems into clean, maintainable solutions.",
+    "techStack": ["TypeScript", "React", "Node.js", "AWS", "Kubernetes"],
+    "terminalCode": "const engineer = {\n  name: 'Sanjay Kumar',\n  role: 'Senior Software Engineer',\n  stack: ['TypeScript', 'React', 'Node.js', 'AWS'],\n  passion: 'Building things that scale'\n};"
+  },
+  "skills": [
+    "TypeScript",
+    "JavaScript",
+    "React",
+    "Next.js",
+    "Node.js",
+    "Python",
+    "AWS",
+    "GCP",
+    "Docker",
+    "Kubernetes",
+    "PostgreSQL",
+    "Redis",
+    "GraphQL",
+    "REST APIs",
+    "CI/CD",
+    "Terraform"
+  ],
+  "projects": [
+    {
+      "id": "project-alpha",
+      "title": "Project Alpha",
+      "description": "A scalable microservices platform handling 10k+ requests/sec with sub-10ms p99 latency.",
+      "techStack": ["Node.js", "Kubernetes", "Kafka", "PostgreSQL"],
+      "thumbnailUrl": "https://sanjay.dev/images/project-alpha.jpg",
+      "githubUrl": "https://github.com/sanjay/project-alpha",
+      "demoUrl": "https://alpha.example.com"
+    }
+  ],
+  "experience": [
+    {
+      "id": "exp-acme",
+      "company": "Acme Corp",
+      "role": "Senior Software Engineer",
+      "startDate": "2022-03",
+      "endDate": "Present",
+      "bullets": [
+        "Led migration of monolith to microservices, reducing deploy times by 60%",
+        "Mentored 3 junior engineers through structured code review process"
+      ]
+    }
+  ],
+  "socialLinks": [
+    { "platform": "GitHub", "url": "https://github.com/sanjay" },
+    { "platform": "LinkedIn", "url": "https://linkedin.com/in/sanjay" }
+  ],
+  "email": "hello@sanjay.dev",
+  "cvUrl": "https://drive.google.com/file/d/example/view",
+  "contact": {
+    "heading": "Get In Touch"
+  },
+  "seo": {
+    "title": "Sanjay Kumar — Senior Software Engineer",
+    "description": "Portfolio of Sanjay Kumar, a Senior Software Engineer specialising in scalable backend systems and cloud infrastructure.",
+    "ogImage": "https://sanjay.dev/og-image.jpg",
+    "siteUrl": "https://sanjay.dev"
+  }
+}
