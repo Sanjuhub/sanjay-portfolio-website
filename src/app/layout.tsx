@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Hanken_Grotesk, JetBrains_Mono } from 'next/font/google';
 import portfolioData from '@/data/portfolio.json';
 import HexBackground from '@/components/HexBackground/HexBackground';
+import CustomCursor from '@/components/CustomCursor/CustomCursor';
 import './globals.css';
 
 const hankenGrotesk = Hanken_Grotesk({
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className={`${hankenGrotesk.variable} ${jetbrainsMono.variable}`}>
       <body className="bg-black text-white font-sans">
         <HexBackground />
+        <CustomCursor />
         <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
       </body>
     </html>

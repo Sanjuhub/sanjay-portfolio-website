@@ -78,7 +78,11 @@ export default function HexBackground() {
       if (idx !== -1) {
         setThemeIdx(idx);
         themeRef.current = THEMES[idx];
+        document.documentElement.style.setProperty('--hex-theme-color', THEMES[idx].dot);
       }
+    } else {
+      // Set default on first load
+      document.documentElement.style.setProperty('--hex-theme-color', THEMES[0].dot);
     }
   }, []);
 
@@ -86,6 +90,8 @@ export default function HexBackground() {
   useEffect(() => {
     themeRef.current = THEMES[themeIdx];
     localStorage.setItem(STORAGE_KEY, THEMES[themeIdx].name);
+    // Expose active theme colour as a CSS variable so other components can read it
+    document.documentElement.style.setProperty('--hex-theme-color', THEMES[themeIdx].dot);
   }, [themeIdx]);
 
   useEffect(() => {

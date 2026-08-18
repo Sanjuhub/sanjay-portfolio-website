@@ -2,11 +2,11 @@
   "name": "Sanjay Kumar",
   "title": "Senior Software Engineer",
   "hero": {
-    "headline": ["Systems", "That", "Scale,", "Code", "That", "Lasts"],
-    "accentWord": "Scale,",
-    "bio": "7 years building distributed backends with Node.js, NestJS, and PostgreSQL. I care about architecture that holds up under pressure — clean APIs, reliable integrations, and teams that ship with confidence.",
-    "techStack": ["Node.js", "NestJS", "TypeScript", "PostgreSQL", "AWS", "Redis"],
-    "terminalCode": "// Initialize engineer profile\n\nconst SanjayKumar = {\n  role: 'Senior Backend Engineer',\n  focus: ['Microservices', 'Event-Driven Arch'],\n  location: 'Gurgaon, India',\n  techStack: {\n    languages: ['JavaScript', 'TypeScript'],\n    frameworks: ['Node.js', 'NestJS', 'Express'],\n    databases: ['PostgreSQL', 'Redis', 'MongoDB']\n  },\n  execute: function() {\n    return 'Building reliable products at scale.';\n  }\n};"
+    "headline": ["Turning", "Complexity", "Into", "Something", "That", "Works"],
+    "accentWord": "Complexity",
+    "bio": "7+ years building distributed backends with Node.js, NestJS, and PostgreSQL. I care about architecture that holds up under pressure — clean APIs, reliable integrations, and teams that ship with confidence.",
+    "techStack": ["Node.js", "NestJS", "TypeScript", "PostgreSQL", "AWS"],
+    "terminalCode": "// Initialize engineer profile\n\nconst SanjayKumar = {\n  role: 'Senior Backend Engineer',\n  focus: ['Microservices', 'Event-Driven Arch'],\n  location: 'India',\n  techStack: {\n    languages: ['JavaScript', 'TypeScript'],\n    frameworks: ['Node.js', 'NestJS', 'Express'],\n    databases: ['PostgreSQL', 'Redis', 'MongoDB']\n  },\n  execute: function() {\n    return 'Building reliable products at scale.';\n  }\n};"
   },
   "skills": [
     "TypeScript",
@@ -60,7 +60,7 @@
   "experience": [
     {
       "id": "exp-ourshopee",
-      "company": "Ourshopee.com",
+      "company": "Shopee Global",
       "role": "Senior Software Engineer",
       "startDate": "2026-03",
       "endDate": "Present",
@@ -102,13 +102,13 @@
     { "platform": "LinkedIn", "url": "https://linkedin.com/in/findmesektor" }
   ],
   "email": "sanjay14324@gmail.com",
-  "cvUrl": "https://drive.google.com/file/d/example/view",
+  "cvUrl": "https://drive.google.com/drive/folders/13vA1rkQWHtkRkRA88XhN4sU4ctlEWYQR?usp=sharing",
   "contact": {
     "heading": "Let's Work Together"
   },
   "seo": {
     "title": "Sanjay Kumar — Senior Software Engineer",
-    "description": "Senior Backend Engineer with 7 years building distributed systems with Node.js, NestJS, PostgreSQL, and AWS. Open to new opportunities.",
+    "description": "Senior Backend Engineer with 7+ years building distributed systems with Node.js, NestJS, PostgreSQL, and AWS. Open to new opportunities.",
     "ogImage": "https://sanjay.dev/og-image.jpg",
     "siteUrl": "https://sanjay.dev"
   }
