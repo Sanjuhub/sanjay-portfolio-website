@@ -40,5 +40,5 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <div style={{ position: 'relative', zIndex: 1 }}>{children}</div>
       </body>
     </html>
-  );
+  )
 }
